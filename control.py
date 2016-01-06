@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 """
 
+This version by Jorgen Modin, jorgen@webworks.se
+
 This file uses RPi.GPIO to output a bit train to a 433.92 MHz transmitter, allowing you
-to control light switches from the Elro brand.
+to control light switches from the Elro & Brennenstuhl brands, and possibly others.
+
+Tested with a Brennenstuhl RCS 1000, on channel (device) 1, device group (key) 1.
 
 Credits:
 Based on
@@ -31,10 +35,10 @@ class RemoteSwitch(object):
     pulselength = 300 # microseconds
     GPIOMode = GPIO.BCM
     
-    def __init__(self, device, key=[1,1,1,1,1], pin=4):
+    def __init__(self, device, key=[1,0,0,0,0], pin=17):
         ''' 
         devices: A = 1, B = 2, C = 4, D = 8, E = 16  
-        key: according to dipswitches on your Elro receivers
+        key: according to dipswitches on your Elro/Brennenstuhl receivers
         pin: according to Broadcom pin naming
         '''     
         self.pin = pin 
@@ -91,7 +95,7 @@ if __name__ == '__main__':
     
     
     # Change the key[] variable below according to the dipswitches on your Elro receivers.
-    default_key = [1,0,0,0,1] 
+    default_key = [1,0,0,0,0] 
     
     # change the pin accpording to your wiring
     default_pin =17
