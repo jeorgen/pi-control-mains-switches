@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 """
-"elropi.py" for switching Elro devices using Python on Raspberry Pi
-by Heiko H. 2012
 
 This file uses RPi.GPIO to output a bit train to a 433.92 MHz transmitter, allowing you
 to control light switches from the Elro brand.
 
 Credits:
+Based on
+"elropi.py" for switching Elro devices using Python on Raspberry Pi
+by Heiko H. 2012 at http://pastebin.com/aRipYrZ6
+
 This file is mostly a port from C++ and Wiring to Python and the RPi.GPIO library, based on 
 C++ source code written by J. Lukas:
     http://www.jer00n.nl/433send.cpp
