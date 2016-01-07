@@ -9,11 +9,11 @@ default_key = [1,0,0,0,0]
 default_device = 1
 control_pin =17
 
-def get_device():
-    device = RemoteSwitch(  device= default_device, 
+def get_remote_switch():
+    deviceResource = RemoteSwitchResource(  device= default_device, 
                             key=default_key, 
                             pin=control_pin)
-    return device
+    return deviceResource
 
  
 def bin2dec(string_num):
@@ -103,16 +103,13 @@ while True:
         print "Temperature:"+ Temperature +"C"
         if int(Humidity) < MIN_HUMIDITY:
             print "Too low humidity %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in ON state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
-            with RemoteSwitchResource(  device= default_device, 
-                            key=default_key, 
-                            pin=control_pin) as device:
-                device.switchOn()
+            with get_remote_switch() as remote_switch:
+                remote_switch.switchOn()
+                
         elif int(Humidity) > MAX_HUMIDITY:
             print "Too high humidity %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in OFF state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
-            with RemoteSwitchResource(  device= default_device, 
-                            key=default_key, 
-                            pin=control_pin) as device:
-                device.switchOff()
+            with get_remote_switch() as remote_switch:
+                remote_switch.switchOff()
     else:
         print "ERR_CRC"
         continue
