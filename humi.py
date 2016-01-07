@@ -20,7 +20,7 @@ def bin2dec(string_num):
     return str(int(string_num, 2))
 
 while True:
-    time.sleep(1)
+    time.sleep(5)
  
     data = []
      
