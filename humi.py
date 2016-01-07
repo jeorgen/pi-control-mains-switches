@@ -1,5 +1,18 @@
 import RPi.GPIO as GPIO
 import time
+from control import RemoteSwitch
+
+MIN_HUMIDITY = 40
+MAX_HUMIDITY = 55
+
+default_key = [1,0,0,0,0]
+default_device = 1
+control_pin =17
+
+
+device = RemoteSwitch(  device= default_device, 
+                            key=default_key, 
+                            pin=control_pin)
  
 def bin2dec(string_num):
     return str(int(string_num, 2))
@@ -86,6 +99,10 @@ while True:
     if int(Humidity) + int(Temperature) - int(bin2dec(crc)) == 0:
         print "Humidity:"+ Humidity +"%"
         print "Temperature:"+ Temperature +"C"
+        if int(Temperature) < MIN_HUMIDITY:
+            device.switchOn()
+        elif int(Temperature) > MAX_HUMIDITY:
+            device.switchOff()
     else:
         print "ERR_CRC"
         continue
