@@ -3,7 +3,7 @@ import time
 from control import RemoteSwitchResource
 
 MIN_HUMIDITY = 35
-MAX_HUMIDITY = 36
+MAX_HUMIDITY = 38
 
 default_key = [1,0,0,0,0]
 default_device = 1
