@@ -31,6 +31,9 @@ import time
 import RPi.GPIO as GPIO
 
 class RemoteSwitchResource(object):
+    def __init__(self, *args, **kwargs)
+        self.package_obj = RemoteSwitch(*args, **kwargs)
+        
     def __enter__(self, *args, **kwargs):
         class RemoteSwitch(object):
             repeat = 10 # Number of transmissions
@@ -88,7 +91,7 @@ class RemoteSwitchResource(object):
                         GPIO.output(self.pin, b)
                         time.sleep(self.pulselength/1000000.)
                 
-        self.package_obj = RemoteSwitch(*args, **kwargs)
+        
         return self.package_obj
 
     def __exit__(self, exc_type, exc_value, traceback):
