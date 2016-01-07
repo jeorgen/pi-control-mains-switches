@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-from control import RemoteSwitch
+from control import RemoteSwitchResource
 
 MIN_HUMIDITY = 30
 MAX_HUMIDITY = 33
@@ -103,12 +103,16 @@ while True:
         print "Temperature:"+ Temperature +"C"
         if int(Humidity) < MIN_HUMIDITY:
             print "Too low humidity %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in ON state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
-            device = get_device()
-            device.switchOn()
+            with RemoteSwitchResource(  device= default_device, 
+                            key=default_key, 
+                            pin=control_pin) as device:
+                device.switchOn()
         elif int(Humidity) > MAX_HUMIDITY:
             print "Too high humidity %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in OFF state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
-            device = get_device()
-            device.switchOff()
+            with RemoteSwitchResource(  device= default_device, 
+                            key=default_key, 
+                            pin=control_pin) as device:
+                device.switchOff()
     else:
         print "ERR_CRC"
         continue
