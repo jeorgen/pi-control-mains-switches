@@ -72,7 +72,8 @@ while True:
                     TemperatureBit = TemperatureBit + "0"
      
     except:
-        print "ERR_RANGE"
+        # print "ERR_RANGE"
+        print '.',
         continue
      
     try:
@@ -92,7 +93,8 @@ while True:
             else:
                 crc = crc + "0"
     except:
-        print "ERR_RANGE"
+        # print "ERR_RANGE"
+        print '.',
         continue
      
     Humidity = bin2dec(HumidityBit)
@@ -102,14 +104,15 @@ while True:
         print "Humidity:"+ Humidity +"%"
         print "Temperature:"+ Temperature +"C"
         if int(Humidity) < MIN_HUMIDITY:
-            print "Too low humidity %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in ON state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
+            print "Humidity too low at %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in ON state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
             with get_remote_switch() as remote_switch:
                 remote_switch.switchOn()
-                
+
         elif int(Humidity) > MAX_HUMIDITY:
-            print "Too high humidity %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in OFF state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
+            print "Humidity too high at %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in OFF state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
             with get_remote_switch() as remote_switch:
                 remote_switch.switchOff()
     else:
-        print "ERR_CRC"
+        # print "ERR_CRC"
+        print 'x',
         continue

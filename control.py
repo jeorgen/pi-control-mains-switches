@@ -35,9 +35,6 @@ class RemoteSwitchResource(object):
         self.package_obj = RemoteSwitch(*args, **kwargs)
 
     def __enter__(self, *args, **kwargs):
-
-                
-        
         return self.package_obj
 
     def __exit__(self, exc_type, exc_value, traceback):
