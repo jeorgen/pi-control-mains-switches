@@ -88,7 +88,7 @@ class RemoteSwitchResource(object):
                         GPIO.output(self.pin, b)
                         time.sleep(self.pulselength/1000000.)
                 
-        self.package_obj = Package(*args, **kwargs)
+        self.package_obj = RemoteSwitch(*args, **kwargs)
         return self.package_obj
 
     def __exit__(self, exc_type, exc_value, traceback):
