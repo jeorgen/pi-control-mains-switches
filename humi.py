@@ -101,7 +101,7 @@ while True:
     Temperature = bin2dec(TemperatureBit)
      
     if int(Humidity) + int(Temperature) - int(bin2dec(crc)) == 0:
-        print "Humidity:"+ Humidity +"%"
+        print "\nHumidity:"+ Humidity +"%"
         print "Temperature:"+ Temperature +"C"
         if int(Humidity) < MIN_HUMIDITY:
             print "Humidity too low at %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in ON state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
