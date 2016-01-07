@@ -60,7 +60,7 @@ class RemoteSwitch(object):
         GPIO.setmode(self.GPIOMode)
         GPIO.setup(self.pin, GPIO.OUT)
 
-    def cleanup():
+    def cleanup(self):
         GPIO.cleanup()
         
     def switchOn(self):
