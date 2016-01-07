@@ -100,7 +100,7 @@ while True:
         print "Humidity:"+ Humidity +"%"
         print "Temperature:"+ Temperature +"C"
         if int(Humidity) < MIN_HUMIDITY:
-            print "Too low humidity %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in ON state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY))
+            print "Too low humidity %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in ON state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
             device.switchOn()
         elif int(Humidity) > MAX_HUMIDITY:
             print "Too high humidity %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in OFF state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
