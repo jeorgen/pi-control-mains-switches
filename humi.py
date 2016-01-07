@@ -99,11 +99,11 @@ while True:
     if int(Humidity) + int(Temperature) - int(bin2dec(crc)) == 0:
         print "Humidity:"+ Humidity +"%"
         print "Temperature:"+ Temperature +"C"
-        if int(Temperature) < MIN_HUMIDITY:
-            print "Too low humidity %s degrees Celsius, switching on" % Temperature
+        if int(Humidity) < MIN_HUMIDITY:
+            print "Too low humidity %s %, switching on" % Humidity
             device.switchOn()
-        elif int(Temperature) > MAX_HUMIDITY:
-            print "Too high humidity %s degrees Celsius, switching off" % Temperature
+        elif int(Humidity) > MAX_HUMIDITY:
+            print "Too high humidity %s %, switching off" % Humidity
             device.switchOff()
     else:
         print "ERR_CRC"
