@@ -2,8 +2,8 @@ import RPi.GPIO as GPIO
 import time
 from control import RemoteSwitchResource
 
-MIN_HUMIDITY = 35
-MAX_HUMIDITY = 38
+MIN_HUMIDITY = 33
+MAX_HUMIDITY = 34
 
 default_key = [1,0,0,0,0]
 default_device = 1
