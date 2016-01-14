@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 """
 
-This version by Jorgen Modin, jorgen@webworks.se
+This version by Jorgen Modin, jorgen@webworks.se, and adds
+"RemoteSwitchResource"which is a context manager wrapper around 
+Remoteswitch, so that a bit of cleanup can be done between
+invocations when running under a server/service..
 
 This file uses RPi.GPIO to output a bit train to a 433.92 MHz transmitter, allowing you
 to control light switches from the Elro & Brennenstuhl brands, and possibly others.
@@ -11,9 +14,8 @@ Tested with a Brennenstuhl RCS 1000, on channel (device) 1, device group (key) 1
 Credits:
 Based on
 "elropi.py" for switching Elro devices using Python on Raspberry Pi
-by Heiko H. 2012 at http://pastebin.com/aRipYrZ6
-
-This file is mostly a port from C++ and Wiring to Python and the RPi.GPIO library, based on 
+by Heiko H. 2012 at http://pastebin.com/aRipYrZ6 ,
+which file is mostly a port from C++ and Wiring to Python and the RPi.GPIO library, based on 
 C++ source code written by J. Lukas:
     http://www.jer00n.nl/433send.cpp
 and Arduino source code written by Piepersnijder:
