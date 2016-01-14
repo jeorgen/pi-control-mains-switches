@@ -102,14 +102,15 @@ while True:
      
     if int(Humidity) + int(Temperature) - int(bin2dec(crc)) == 0:
         print "\nHumidity:"+ Humidity +"%"
+        print "Acceptable range is %s %% to %s %%" % (MIN_HUMIDITY, MAX_HUMIDITY)
         print "Temperature:"+ Temperature +"C"
-        if int(Humidity) < MIN_HUMIDITY:
-            print "Humidity too low at %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in ON state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
+        if 5 < int(Humidity) < MIN_HUMIDITY: # "5" is there due to measurement errors giving "2" or "3"
+            print "Humidity too low at %s %%, ensuring humidifier is in ON state" % (Humidity,)
             with get_remote_switch() as remote_switch:
                 remote_switch.switchOn()
 
         elif int(Humidity) > MAX_HUMIDITY:
-            print "Humidity too high at %s %%, acceptable range is %s %% to %s %%, ensuring humidifier is in OFF state" % (Humidity, MIN_HUMIDITY, MAX_HUMIDITY)
+            print "Humidity too high at %s %%, ensuring humidifier is in OFF state" % (Humidity,)
             with get_remote_switch() as remote_switch:
                 remote_switch.switchOff()
     else:
